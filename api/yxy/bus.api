@@ -1,0 +1,102 @@
+syntax = "v1"
+
+info (
+	title:   "易校园一卡通接口"
+	author:  "Zerohzzzz"
+	date:    "2025 年 2 月 18 日"
+	version: "v1"
+)
+
+type (
+	GetBusAuthReq {
+		UID string `form:"uid"`
+	}
+	GetBusAuthResp {
+		Token string `json:"token"`
+	}
+)
+
+type (
+	BusStation {
+		ID   string `json:"id"`
+		Name string `json:"station_name"`
+		Seq  int    `json:"station_seq"`
+	}
+	BusTime {
+		DepartureTime string `json:"departure_time"`
+		// ShuttleTypeName string `json:"type`
+		ID string `json:"id"`
+	}
+	BusInfo {
+		ID            string       `json:"id"`
+		Name          string       `json:"name"`
+		Seats         int          `json:"seats"`
+		Price         int          `json:"price"`
+		Stations      []BusStation `json:"stations"`
+		TicketOfBuses bool         `json:"tickets"`
+		HasTicket     bool         `json:"has_ticket"`
+		ReservedSeats int          `json:"reserved"`
+		IsActive      bool         `json:"is_active"`
+		Busfavourite  bool         `json:"busfavourite"`
+		BusTime       []BusTime    `json:"bus_time"`
+	}
+	GetBusInfoReq {
+		Page     int    `form:"page"`
+		PageSize int    `form:"page_size"`
+		Search   string `form:"search,optional"`
+	}
+	GetBusInfoResp {
+		BusInfo []BusInfo `json:"bus_info"`
+	}
+)
+
+type (
+	BusRecord {
+		ID            string `json:"id"`
+		Name          string `json:"name"`
+		PayTime       string `json:"pay_time"`
+		DepartureTime string `json:"departure_time"`
+	}
+	GetBusRecordReq {
+		Token    string `form:"token"`
+		Page     int    `form:"page"`
+		PageSize int    `form:"page_size"`
+		Status   string `form:"status, options=-10|0|10|20|30"`
+		// status : -10 所有已结束（包括不成功），0 所有， 20 所有未出发 30 所有成功结束
+		// 推测 10 进行中
+	}
+	GetBusRecordResp {
+		BusRecords []BusRecord `json:"bus_records"`
+	}
+)
+
+type (
+	Message {
+		ID      string `json:"id"`
+		MsgType string `json:"msg_type"`
+		MsgID   string `json:"msg_id"`
+		Title   string `json:"title"`
+		IsRead  int    `json:"is_read"`
+		Content string `json:"content"`
+		HTML    string `json:"html"`
+		Img     string `json:"img"`
+		Author  string `json:"author"`
+	}
+	GetUnreadMessageReq {
+		Token    string `form:"token"`
+		Page     int    `form:"page"`
+		PageSize int    `form:"page_size"`
+	}
+	GetUnreadMessageResp {
+		Messages []Message `json:"messages"`
+	}
+)
+
+type (
+	GetBusQrcodeReq {
+		Token string `form:"token"`
+	}
+	GetBusQrcodeResp {
+		Qrcode string `json:"qrcode"`
+	}
+)

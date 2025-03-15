@@ -8,6 +8,9 @@ const (
 	COMPUS_URL      = "https://compus.xiaofubao.com"
 	APPLICATION_URL = "https://application.xiaofubao.com"
 	AUTH_URL        = "https://auth.xiaofubao.com"
+
+	BUS_AUTH_URL = "https://open.xiaofubao.com"
+	BUS_URL      = "https://api.pinbayun.com"
 )
 
 const (
@@ -33,4 +36,17 @@ const (
 	GET_ELECTRICITY_MGS_RECHARGE_RECORDS_URL  = APPLICATION_URL + "/app/electric/roomBuyRecord"
 	GET_ELECTRICITY_ZHPF_USAGE_RECORDS_URL    = APPLICATION_URL + "/app/electric/getISIMSRecords"
 	GET_ELECTRICITY_MGS_USAGE_RECORDS_URL     = APPLICATION_URL + "/app/electric/queryUsageRecord"
+)
+
+const (
+	GET_BUS_AUTH_CODE_URL  = BUS_AUTH_URL + "/routeauth/auth/route/ua/authorize/getCodeV2"
+	GET_BUS_AUTH_TOKEN_URL = BUS_URL + "/api/v1/staff/auths/wx_auth/"
+	GET_BUS_INFO_URL       = BUS_URL + "/api/v2/staff/shuttlebus/"
+	GET_BUS_TIME_URL       = BUS_URL + "/api/v2/staff/shuttlebus/{id}/bustimes/"
+	GET_BUS_DATE_URL       = BUS_URL + "/api/v2/staff/shuttlebus/{id}/dates/"
+	GET_BUS_RECORD_URL     = BUS_URL + "/api/v1/staff/busorders/"
+
+	GET_BUS_QRCODE_URL              = BUS_URL + "/api/v3/pos/staff_qrcode/"
+	GET_BUS_NOTICE_UNREAD_COUNT_URL = BUS_URL + "/api/v1/staff/messages/unread_count/"
+	GET_BUS_MESSAGE_UUL             = BUS_URL + "/api/v1/staff/messages/"
 )
